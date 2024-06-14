@@ -1,0 +1,35 @@
+.grid {
+    width: grid(12);
+    margin: 0 auto;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gutter);
+    pointer-events: none;
+
+    @media screen and (max-width: $to-medium) {
+        width: grid(8);
+        grid-template-columns: repeat(8, 1fr);
+    }
+
+    @media screen and (max-width: $to-small) {
+        width: grid(6);
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+.col {
+    width: 100%;
+    height: 100vh;
+}
+
+.grid1 {
+    display: grid;
+
+    .col {
+        background: rgba(#f1eeeb, 0.5);
+    }
+}

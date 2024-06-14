@@ -1,0 +1,58 @@
+/* stylelint-disable scss/no-global-function-names */
+@use 'sass:math';
+@use 'sass:map';
+
+// Grids
+@function compute-grid-column($columnCount, $outerGutter: true) {
+    @return calc(
+        (var(--width) - (#{$columnCount - 1 + if($outerGutter, 2, 0)} * var(--grid-gutter))) / #{$columnCount}
+    );
+}
+
+@function compute-grid($columns, $additionalGutters: 0) {
+    $gutters: max(0, $columns - 1) + $additionalGutters;
+
+    @return ($columns, $gutters);
+}
+
+@function compute-grid-calc($computed) {
+    $columns: nth($computed, 1);
+    $gutters: nth($computed, 2);
+
+    @if $columns == 0 {
+        @return calc(var(--grid-gutter) * #{$gutters});
+    }
+
+    @if $columns == 1 and $gutters == 0 {
+        @return var(--grid-column);
+    }
+
+    @return calc((var(--grid-column) * #{$columns}) + (var(--grid-gutter) * #{$gutters}));
+}
+
+@function grid($columns, $additionalGutters: 0) {
+    @return compute-grid-calc(compute-grid($columns, $additionalGutters));
+}
+
+// Space
+@function compute-space-cal($value) {
+    @return calc(var(--space) * #{$value});
+}
+
+@function space($value) {
+    @return compute-space-cal($value);
+}
+
+// Size
+@function compute-size-cal($value) {
+    @return calc(var(--size) * #{$value});
+}
+
+@function size($value) {
+    @return compute-size-cal($value);
+}
+
+// Utils
+@function rem($value) {
+    @return $value * 1rem;
+}

@@ -1,0 +1,26 @@
+.button {
+    width: 100%;
+    padding: rem(1) rem(1.5);
+    border: 1px solid $color-white;
+    text-align: center;
+    cursor: pointer;
+
+    @media screen and (min-width: $from-small) {
+        width: fit-content;
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        background: #666;
+    }
+}
+
+.primary {
+    color: $color-white;
+    background: $color-dark;
+}
+
+.secondary {
+    color: $color-dark;
+    border-color: $color-dark;
+}

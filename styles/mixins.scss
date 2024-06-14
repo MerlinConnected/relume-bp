@@ -1,0 +1,39 @@
+/* stylelint-disable custom-property-empty-line-before */
+@mixin variables {
+    --width: 70vw;
+
+    --gutter: 1.5rem;
+    --grid-gutter: var(--gutter);
+    --grid-column: #{compute-grid-column(12, true)};
+
+    --space: 1rem;
+    --size: 1rem;
+
+    @media screen and (max-width: $to-colossal) {
+        --width: 80vw;
+    }
+
+    @media screen and (max-width: $to-huge) {
+        --width: 98vw;
+    }
+
+    @media screen and (max-width: $to-medium) {
+        --gutter: 1rem;
+        --grid-column: #{compute-grid-column(8, true)};
+
+        --space: 0.75rem;
+        --size: 0.75rem;
+    }
+
+    @media screen and (max-width: $to-small) {
+        --width: 90vw;
+
+        --gutter: 0.5rem;
+        --grid-column: #{compute-grid-column(6, true)};
+    }
+
+    @media screen and (max-width: $to-tiny) {
+        --space: 0.5rem;
+        --size: 0.5rem;
+    }
+}
